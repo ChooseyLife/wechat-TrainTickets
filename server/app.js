@@ -6,26 +6,22 @@ let app = new Koa()
 app.use(async ctx => {
     console.log(ctx)
     if(ctx.path === '/'){
-        ctx.body = 'Hello, this is 3000'
+        let html = `
+      <h1>koa2 request post demo</h1>
+      <form method="POST" action="/tran">
+        <p>userName</p>
+        <input name="userName" /><br/>
+        <p>nickName</p>
+        <input name="nickName" /><br/>
+        <p>email</p>
+        <input name="email" /><br/>
+        <button type="submit">submit</button>
+      </form>
+    `
+        ctx.body = html
     }
-    if(ctx.path === '/tran'){
-        let url = ctx.url
-        // 从上下文的request对象中获取
-        let request = ctx.request
-        let req_query = request.query
-        let req_querystring = request.querystring
+    if(ctx.path === '/tran' && ctx.method === 'POST'){
 
-        // 从上下文中直接获取
-        let ctx_query = ctx.query
-        let ctx_querystring = ctx.querystring
-
-        ctx.body = {
-            url,
-            req_query,
-            req_querystring,
-            ctx_query,
-            ctx_querystring
-        }
     }
 });
 
