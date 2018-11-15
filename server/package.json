@@ -11,8 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "bluebird": "^3.5.3",
-    "body-parser": "^1.18.3",
     "koa": "^2.6.1",
+    "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0"
   }
 }
