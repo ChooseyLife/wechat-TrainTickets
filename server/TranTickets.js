@@ -2,12 +2,12 @@
 let https = require('https')
 let Promise = require('bluebird')
 let fs = require('fs')
+let requestApi = require('./public/js/request')
 
 let CA_Cert = fs.readFileSync('./public/cert/srca_der.cer');
 
 async function getQueryPrice(config) {
-    let result = await QueryPrice(config)
-    return result
+    return await QueryPrice(config)
 }
 
 const QueryPrice = (config) => {
@@ -29,27 +29,16 @@ const QueryPrice = (config) => {
             },
         }
         let DataBuf = ""
-        https.get(options, (res) => {
-            console.log('状态码:', res.statusCode)
-            console.log('请求头:', res.headers)
-            res.on('data', (d) => {
-                DataBuf += d
-            })
-            res.on('end', () => {
-                let resData = {}
-                resData = JSON.parse(DataBuf)
-                console.log(resData.data)
-                resolve(resData)
-            })
-        }).on('error', (e) => {
-            console.error(e)
+        requestApi.get(options).then(res => {
+            resolve(res)
         })
+
         /*
-        let req = https.get(options, function(res){ 
+        let req = https.get(options, function(res){
             res.on('data',function(buf){
                 DataBuf += buf;
-            }); 
-    
+            });
+
             res.on('end',function(){
                 var resdata = {};
                 console.log(DataBuf)
@@ -65,7 +54,7 @@ const QueryPrice = (config) => {
                 reject(null, data);
             });
         });
-    
+
         req.on('error', function(err){
             reject(err, null);
             console.error(err.code);

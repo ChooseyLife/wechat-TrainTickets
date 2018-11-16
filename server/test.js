@@ -9,9 +9,7 @@ app.use(router.routes())
 
 router.post('/price', async (ctx) => {
     let data = ctx.request.body
-    console.log((data))
-    let result = await train.QueryPrice(data)
-    ctx.body = result
+    ctx.body = await train.QueryPrice(data)
 })
 
 
