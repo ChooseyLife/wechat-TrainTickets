@@ -7,23 +7,31 @@ class Request {
         this.baseUrl = baseUrl
     }
 
-    get(config, cb) {
-        let dataBuf = ''
-        https.get(config, (res) => {
-            res.on('data', (d) => {
-                dataBuf += d
+    get(config) {
+        return new Promise((resolve, reject) => {
+            let dataBuf = ''
+            let resData = {}
+            https.get(config, (res) => {
+                res.on('data', (d) => {
+                    dataBuf += d
+                })
+                res.on('end', () => {
+                    try {
+                        resData = JSON.parse(dataBuf)
+                    }
+                    catch (e){
+                        resolve({error: e, info: dataBuf})
+                        return
+                    }
+                    if(!resData.status) {
+                        resolve({error:resData.status})
+                        return
+                    }
+                    resolve(resData)    
+                })
+            }).on('error', (e) => {
+                resolve({error: e, info: dataBuf})
             })
-            res.on('end', () => {
-                try {
-                    let resData = JSON.parse(dataBuf)
-                }
-                catch (e){
-                    cb({error: e, info: dataBuf})
-                }
-
-            })
-        }).on('error', (e) => {
-            reject(e)
         })
     }
 }

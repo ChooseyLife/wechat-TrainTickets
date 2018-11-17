@@ -14,10 +14,10 @@
     methods: {
       getTrainPrice() {
         let opt = {
-          train_no: '580000K230Q',
-          from_station_no: '10',
-          to_station_no: '17',
-          seat_types: '1413',
+          train_no: '6i000G291605',
+          from_station_no: '02',
+          to_station_no: '05',
+          seat_types: 'OM9',
           train_date: '2018-11-08'
         }
         this.toUrlParams(opt)

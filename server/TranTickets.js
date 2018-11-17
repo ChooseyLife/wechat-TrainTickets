@@ -7,6 +7,15 @@ let requestApi = require('./public/js/request')
 let CA_Cert = fs.readFileSync('./public/cert/srca_der.cer');
 
 async function getQueryPrice(config) {
+    /*
+    * 9: "5065"
+    * A9: "¥506.5"
+    * M: "¥269.0"
+    * O: "¥169.0"
+    * OT: []
+    * WZ: "¥169.0"
+    * train_no: "6i000G291605"
+    */
     return await QueryPrice(config)
 }
 
@@ -28,7 +37,7 @@ const QueryPrice = (config) => {
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
             },
         }
-        let DataBuf = ""
+
         requestApi.get(options).then(res => {
             resolve(res)
         })
@@ -62,6 +71,8 @@ const QueryPrice = (config) => {
         */
     })
 }
+
+const 
 
 module.exports = {
     QueryPrice: getQueryPrice
