@@ -12,6 +12,11 @@ router.post('/price', async (ctx) => {
     ctx.body = await train.QueryPrice(data)
 })
 
+router.post('/ticket', async (ctx) => {
+    let data = ctx.request.body
+    ctx.body = await train.QueryTicket(data)
+})
+
 
 app.listen(3000)
 console.log('listening port 3000')
