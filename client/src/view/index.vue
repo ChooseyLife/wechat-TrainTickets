@@ -27,7 +27,7 @@
           seat_types: '1413',
           train_date: '2018-11-24'
         }
-        this.postMehod('/price', opt, 'POST', (res) => {
+        this.postMehod('/api/price', opt, 'POST', (res) => {
           this.message = res
         })
       },
@@ -37,7 +37,7 @@
           end_station: 'KMM',
           date: '2018-11-24'
         }
-        this.postMehod('/ticket', opt, 'POST', (res) => {
+        this.postMehod('/api/ticket', opt, 'POST', (res) => {
           this.message = res
         })
       },
