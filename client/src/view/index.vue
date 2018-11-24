@@ -31,7 +31,16 @@
           this.message = res
         })
       },
-      getTrainTicket() {},
+      getTrainTicket() {
+        let opt = {
+          from_station: 'GZQ',
+          end_station: 'KMM',
+          date: '2018-11-24'
+        }
+        this.postMehod('/ticket', opt, 'POST', (res) => {
+          this.message = res
+        })
+      },
       getTrainStation() {},
       toUrlParams(opt) {
         let arr = []

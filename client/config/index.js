@@ -11,7 +11,14 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      "/price": "http://localhost:3000"
+      '/': {
+        target: 'http://localhost:3000',
+        pathRewrite: {
+          '^/price': '/price',
+          '^/ticket': '/ticket',
+          '^/station': '/station'
+        }
+      }
     },
 
     // Various Dev Server settings
