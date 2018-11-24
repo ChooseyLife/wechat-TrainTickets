@@ -17,6 +17,5 @@ router.post('/ticket', async (ctx) => {
     ctx.body = await train.QueryTicket(data)
 })
 
-
 app.listen(3000)
 console.log('listening port 3000')

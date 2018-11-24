@@ -27,38 +27,30 @@ async function getQueryPrice(config) {
     * train_no: "6i000G291605" 
     */
    let query_lefttickets = 'leftTicket/queryTicketPrice?'
-        +'train_no='+config.train_no
-        +'&from_station_no='+config.from_station_no
-        +'&to_station_no='+config.to_station_no
-        +'&seat_types='+config.seat_types
-        +'&train_date='+config.train_date
+                            +'train_no='+config.train_no
+                            +'&from_station_no='+config.from_station_no
+                            +'&to_station_no='+config.to_station_no
+                            +'&seat_types='+config.seat_types
+                            +'&train_date='+config.train_date
     
     options.path = '/otn/'+query_lefttickets
     return await requestApi.get(options)
 }
 
 async function getQueryTicket(config){
-    let query_lefttickets = 'leftTicket/queryTicketPrice?'
-    +'train_no='+config.train_no
-    +'&from_station_no='+config.from_station_no
-    +'&to_station_no='+config.to_station_no
-    +'&seat_types='+config.seat_types
-    +'&train_date='+config.train_date
+    let query_lefttickets = 'leftTicket/query?'
+                            +'leftTicketDTO.train_date='+config.date
+                            +'&leftTicketDTO.from_station='+config.from_station
+                            +'&leftTicketDTO.to_station='+config.end_station
+                            +'&purpose_codes=ADULT';
     
     options.path = '/otn/'+query_lefttickets
     options.query_lefttickets = query_lefttickets  
 
-    return await QueryTicket(options)
-}
-
-const QueryTicket = (config) => {
-    return new Promise((resolve, reject) => {
-        requestApi.get(options).then(res => {
-            resolve(res)
-        })
-    })
+    return await requestApi.get(options)
 }
 
 module.exports = {
-    QueryPrice: getQueryPrice
+    QueryPrice: getQueryPrice,
+    QueryTicket: getQueryTicket
 }

@@ -17,7 +17,6 @@ class Request {
                 })
                 res.on('end', () => {
                     try {
-                        console.log(dataBuf)
                         resData = JSON.parse(dataBuf)
                     }
                     catch (e){
