@@ -27,8 +27,7 @@
           seat_types: '1413',
           train_date: '2018-11-24'
         }
-        this.toUrlParams(opt)
-        this.postMehod('/price', opt, (res) => {
+        this.postMehod('/price', opt, 'POST', (res) => {
           this.message = res
         })
       },
@@ -41,9 +40,9 @@
         }
         return arr.join('&')
       },
-      postMehod(url, option, cb) {
+      postMehod(url, option, method, cb) {
         let xhr = new XMLHttpRequest()
-        xhr.open('POST', url, true)
+        xhr.open(method, url, true)
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
         xhr.send(this.toUrlParams(option))
         xhr.onreadystatechange = function () {
