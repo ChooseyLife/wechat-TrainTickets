@@ -41,7 +41,7 @@
           this.message = res
         })
       },
-      getTrainStation() {
+      getTrainStation1() {
         let opt = {
           train_no: '630000K3650A',
           from_station: 'GZQ',
@@ -50,6 +50,11 @@
         }
         this.postMehod('/api/station', opt, 'POST', (res) => {
           this.message = res
+        })
+      },
+      getTrainStation() {
+        this.postMehod('/api/updateStations', '', 'POST', (res) => {
+          console.log(res)
         })
       },
       toUrlParams(opt) {
@@ -61,9 +66,10 @@
       },
       postMehod(url, option, method, cb) {
         let xhr = new XMLHttpRequest()
+        let params = method === 'POST' ? this.toUrlParams(option) : option
         xhr.open(method, url, true)
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
-        xhr.send(this.toUrlParams(option))
+        xhr.send(params)
         xhr.onreadystatechange = function () {
           if (xhr.readyState === 4) {
             if (xhr.status === 200 || xhr.status === 304) {

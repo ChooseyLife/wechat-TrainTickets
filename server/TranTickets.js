@@ -63,22 +63,28 @@ async function getQueryStations(config){
     return await requestApi.get(options)
 }
 
-async function updateStations(config){
-    let query_lefttickets = 'leftTicket/query?'
-                            +'leftTicketDTO.train_date='+config.date
-                            +'&leftTicketDTO.from_station='+config.from_station
-                            +'&leftTicketDTO.to_station='+config.end_station
-                            +'&purpose_codes=ADULT';
-    
-    options.path = '/otn/'+query_lefttickets
-    options.query_lefttickets = query_lefttickets  
-
-    return await requestApi.get(options)
+async function updateStations(){    
+    options.path = '/otn/resources/js/framework/station_name.js?station_version=1.9069'
+    let data = await requestApi.get(options)
+    let result = ''
+    let r = data.info.split('=')[1]
+    let stations = r.split('@')
+    let stationsFile = []
+    stations.shift()
+    stations.forEach((val,index) => {
+        let list = {}
+        var [start, code, end] = val.split('|')
+        list.start_name = start
+        list.end_name = end
+        list.code = code
+        stationsFile.push(list)
+    })
+    return stationsFile
 }
 
 module.exports = {
     QueryPrice: getQueryPrice,
     QueryTicket: getQueryTicket,
     QueryStations: getQueryStations,
-    updateStation: updateStations
+    updateStations: updateStations
 }

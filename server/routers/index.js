@@ -16,6 +16,10 @@ router.post('/station', async (ctx) => {
     ctx.body = await train.QueryStations(data)
 })
 
+router.post('/updateStations', async (ctx) => {
+    ctx.body = await train.updateStations()
+})
+
 module.exports = {
     router: router
 }
