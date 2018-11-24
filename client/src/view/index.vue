@@ -19,6 +19,16 @@
     created() {
     },
     methods: {
+      getTrainTicket() {
+        let opt = {
+          from_station: 'GZQ',
+          end_station: 'KMM',
+          date: '2018-11-24'
+        }
+        this.postMehod('/api/ticket', opt, 'POST', (res) => {
+          this.message = res
+        })
+      },
       getTrainPrice() {
         let opt = {
           train_no: '630000K3650A',
@@ -31,17 +41,17 @@
           this.message = res
         })
       },
-      getTrainTicket() {
+      getTrainStation() {
         let opt = {
+          train_no: '630000K3650A',
           from_station: 'GZQ',
           end_station: 'KMM',
-          date: '2018-11-24'
+          date: '2018-11-27'
         }
-        this.postMehod('/api/ticket', opt, 'POST', (res) => {
+        this.postMehod('/api/station', opt, 'POST', (res) => {
           this.message = res
         })
       },
-      getTrainStation() {},
       toUrlParams(opt) {
         let arr = []
         for (let k in opt) {

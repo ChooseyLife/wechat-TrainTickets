@@ -50,7 +50,35 @@ async function getQueryTicket(config){
     return await requestApi.get(options)
 }
 
+async function getQueryStations(config){
+    let query_lefttickets = 'czxx/queryByTrainNo?'
+                            +'train_no='+config.train_no
+                            +'&from_station_telecode='+config.from_station
+                            +'&to_station_telecode='+config.end_station
+                            +'&depart_date='+config.date;
+    
+    options.path = '/otn/'+query_lefttickets
+    options.query_lefttickets = query_lefttickets  
+
+    return await requestApi.get(options)
+}
+
+async function updateStations(config){
+    let query_lefttickets = 'leftTicket/query?'
+                            +'leftTicketDTO.train_date='+config.date
+                            +'&leftTicketDTO.from_station='+config.from_station
+                            +'&leftTicketDTO.to_station='+config.end_station
+                            +'&purpose_codes=ADULT';
+    
+    options.path = '/otn/'+query_lefttickets
+    options.query_lefttickets = query_lefttickets  
+
+    return await requestApi.get(options)
+}
+
 module.exports = {
     QueryPrice: getQueryPrice,
-    QueryTicket: getQueryTicket
+    QueryTicket: getQueryTicket,
+    QueryStations: getQueryStations,
+    updateStation: updateStations
 }
