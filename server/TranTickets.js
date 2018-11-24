@@ -73,10 +73,14 @@ async function updateStations(){
     stations.shift()
     stations.forEach((val,index) => {
         let list = {}
-        var [start, code, end] = val.split('|')
-        list.start_name = start
-        list.end_name = end
+        let [short, name, code, py,other] = val.split('|')
+        
+        list.name = name
+        list.py = py
         list.code = code
+        list.short = short
+        list.other = other
+
         stationsFile.push(list)
     })
     return stationsFile
