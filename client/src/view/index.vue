@@ -1,30 +1,39 @@
 <template>
   <div>
     <h3>火车票查询系统</h3>
-
+    <div v-text="message"></div>
+    <button @click="getTrainTicket">查询火车票</button>
+    <button @click="getTrainPrice">查询票价</button>
+    <button @click="getTrainStation">查询中途停靠站列表</button>
   </div>
 </template>
 
 <script>
   export default {
     name: 'index',
+    data() {
+      return {
+        message: ''
+      }
+    },
     created() {
-      this.getTrainPrice()
     },
     methods: {
       getTrainPrice() {
         let opt = {
-          train_no: '6i000G291605',
-          from_station_no: '02',
-          to_station_no: '05',
-          seat_types: 'OM9',
-          train_date: '2018-11-08'
+          train_no: '630000K3650A',
+          from_station_no: '01',
+          to_station_no: '09',
+          seat_types: '1413',
+          train_date: '2018-11-24'
         }
         this.toUrlParams(opt)
         this.postMehod('/price', opt, (res) => {
-          console.log(res)
+          this.message = res
         })
       },
+      getTrainTicket() {},
+      getTrainStation() {},
       toUrlParams(opt) {
         let arr = []
         for (let k in opt) {

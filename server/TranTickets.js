@@ -12,7 +12,7 @@ let options = {
     ca : [CA_Cert],
     headers: {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
-    },
+    }
 }
 
 async function getQueryPrice(config) {
@@ -31,10 +31,26 @@ async function getQueryPrice(config) {
         +'&to_station_no='+config.to_station_no
         +'&seat_types='+config.seat_types
         +'&train_date='+config.train_date
+        var options1 = {
+            rejectUnauthorized: false,  	 // 如果报错"SELF_SIGNED_CERT_IN_CHAIN"，则必须加上这个设置
+            hostname: 'kyfw.12306.cn',		 //12306官网
+            path: '/otn/'+query_lefttickets,
+            ca : [CA_Cert],
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+            }
+        }
     
     options.path = '/otn/'+query_lefttickets
-    options.query_lefttickets = query_lefttickets     
-    return await QueryPrice(options)
+            let dataBuf = ''
+            let resData = {}
+            return new Promise((resolve) => {
+                https.get(options1, (res) => {
+                    console.log('statusCode:', res.statusCode);
+                    console.log('headers:', res.headers);
+                    resolve(res)
+                })
+            })
 }
 
 async function getQueryTicket(config){
@@ -52,14 +68,16 @@ async function getQueryTicket(config){
 }
 
 const QueryTicket = (config) => {
-
-}
-
-const QueryPrice = (config) => {
-    return new Promise((resolve, reject) => {        
+    return new Promise((resolve, reject) => {
         requestApi.get(options).then(res => {
             resolve(res)
         })
+    })
+}
+
+const QueryPrice = (config) => {
+    requestApi.get(options).then(res => {
+        resolve(res)
     })
 }
 
