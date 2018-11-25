@@ -42,7 +42,7 @@ async function getQueryTicket(config){
                             +'leftTicketDTO.train_date='+config.date
                             +'&leftTicketDTO.from_station='+config.from_station
                             +'&leftTicketDTO.to_station='+config.end_station
-                            +'&purpose_codes=ADULT';
+                            +'&purpose_codes=' + config.people;
     
     options.path = '/otn/'+query_lefttickets
     options.query_lefttickets = query_lefttickets  

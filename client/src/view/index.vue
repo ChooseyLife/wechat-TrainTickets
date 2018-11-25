@@ -20,13 +20,16 @@
     },
     methods: {
       getTrainTicket() {
+        // people: ADULT / 0X00 - 学生
         let opt = {
           from_station: 'GZQ',
           end_station: 'KMM',
-          date: '2018-11-24'
+          date: '2018-12-25',
+          people: 'ADULT'
         }
         this.postMehod('/api/ticket', opt, 'POST', (res) => {
-          this.message = res
+          this.message = res.result
+          console.log(res.result)
         })
       },
       getTrainPrice() {
@@ -35,7 +38,7 @@
           from_station_no: '01',
           to_station_no: '09',
           seat_types: '1413',
-          train_date: '2018-11-24'
+          train_date: '2018-11-30'
         }
         this.postMehod('/api/price', opt, 'POST', (res) => {
           this.message = res
@@ -46,7 +49,7 @@
           train_no: '630000K3650A',
           from_station: 'GZQ',
           end_station: 'KMM',
-          date: '2018-11-27'
+          date: '2018-11-30'
         }
         this.postMehod('/api/station', opt, 'POST', (res) => {
           this.message = res
