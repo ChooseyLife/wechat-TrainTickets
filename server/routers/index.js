@@ -43,8 +43,8 @@ function handleTickets(trainArray){
         let r = val.split('|')
         list.train_no = r[2]
         list.train_Id = r[3]
-        list.fStation = r[6]
-        list.tStation = r[7]
+        list.fStation = transtionCode(r[6], map)
+        list.tStation = transtionCode(r[7], map)
         list.depart = r[8]
         list.arrive = r[9]
         list.total_time = r[10]
@@ -68,6 +68,16 @@ function handleTickets(trainArray){
     train_tickets.status = trainArray.status
     train_tickets.httpstatus = trainArray.httpstatus
     return train_tickets
+}
+
+function transtionCode(code, map){
+    if(map) {
+        let name = map[code]
+        if(name) {
+            return name
+        }
+    }
+    return code
 }
 
 module.exports = {
