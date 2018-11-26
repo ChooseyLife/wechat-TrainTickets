@@ -5,7 +5,6 @@
 </template>
 
 <script>
-  import {request} from '@/assets/js/request'
   export default {
     name: 'index',
     data() {

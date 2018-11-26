@@ -8,7 +8,7 @@ function toUrlParams(opt) {
 }
 
 /* eslint-disable no-new */
-export function request(url, option, method, cb) {
+function request(url, option, method, cb) {
   let xhr = new XMLHttpRequest()
   let params = method === 'POST' ? this.toUrlParams(option) : option
   xhr.open(method, url, true)
@@ -21,5 +21,10 @@ export function request(url, option, method, cb) {
       }
     }
   }
+}
+
+module.export = {
+  http: request,
+  formatter: toUrlParams
 }
 
