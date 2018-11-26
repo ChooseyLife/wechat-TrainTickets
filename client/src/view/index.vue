@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h3 class="title" @click="getStation">火车票查询系统</h3>
+    <span class="title" @click="getStation">火车票查询系统</span>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -52,6 +53,7 @@
         })
       },
       getStation() {
+        console.log(1)
         this.$router.push({path: 'station'})
       },
       toUrlParams(opt) {
@@ -80,7 +82,7 @@
 </script>
 
 <style scoped>
-.title{
-  color: #fff;
-}
+  .title{
+    color: #fff;
+  }
 </style>

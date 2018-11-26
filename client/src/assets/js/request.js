@@ -1,4 +1,3 @@
-/* eslint-disable no-new */
 function toUrlParams(opt) {
   let arr = []
   for (let k in opt) {
@@ -7,13 +6,11 @@ function toUrlParams(opt) {
   return arr.join('&')
 }
 
-/* eslint-disable no-new */
 function request(url, option, method, cb) {
   let xhr = new XMLHttpRequest()
-  let params = method === 'POST' ? this.toUrlParams(option) : option
   xhr.open(method, url, true)
   xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
-  xhr.send(params)
+  xhr.send(option)
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
       if (xhr.status === 200 || xhr.status === 304) {
@@ -25,6 +22,5 @@ function request(url, option, method, cb) {
 
 module.export = {
   http: request,
-  formatter: toUrlParams
+  toUrlParams: toUrlParams
 }
-

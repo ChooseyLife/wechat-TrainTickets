@@ -13,7 +13,13 @@ export default new Router({
     },
     {
       path: '/index',
-      component: index
+      component: index,
+      children: [
+        {
+          path: ':id',
+          component: stations
+        }
+      ]
     },
     {
       path: '/stations',

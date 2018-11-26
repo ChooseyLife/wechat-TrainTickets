@@ -1,23 +1,9 @@
 <template>
-  <div>
-  </div>
+    <div>stations</div>
 </template>
 
-<script>
-  import http from '@/assets/js/request'
-  export default {
-    created() {
-      this.stationList()
-    },
-    methods: {
-      stationList() {
-        console.log(1)
-        http.http('/station', null, (res) => {
-          console.log(res)
-        })
-      }
-    }
-  }
+<script type="text/ecmascript-6">
+
 </script>
 
 <style scoped>
