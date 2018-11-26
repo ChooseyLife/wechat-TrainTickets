@@ -1,14 +1,11 @@
 <template>
   <div>
-    <h3>火车票查询系统</h3>
-    <div v-text="message"></div>
-    <button @click="getTrainTicket">查询火车票</button>
-    <button @click="getTrainPrice">查询票价</button>
-    <button @click="getTrainStation">查询中途停靠站列表</button>
+    <h3 class="title" @click="getStation">火车票查询系统</h3>
   </div>
 </template>
 
 <script>
+  import {request} from '@/assets/js/request'
   export default {
     name: 'index',
     data() {
@@ -44,7 +41,7 @@
           this.message = res
         })
       },
-      getTrainStation1() {
+      getTrainStation() {
         let opt = {
           train_no: '630000K3650A',
           from_station: 'GZQ',
@@ -55,10 +52,8 @@
           this.message = res
         })
       },
-      getTrainStation() {
-        this.postMehod('/api/updateStations', '', 'POST', (res) => {
-          console.log(res)
-        })
+      getStation() {
+        this.$router.push({path: 'station'})
       },
       toUrlParams(opt) {
         let arr = []
@@ -86,5 +81,7 @@
 </script>
 
 <style scoped>
-
+.title{
+  color: #fff;
+}
 </style>
