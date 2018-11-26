@@ -63,10 +63,9 @@ async function getQueryStations(config){
     return await requestApi.get(options)
 }
 
-async function updateStations(){    
+async function updateStations(){
     options.path = '/otn/resources/js/framework/station_name.js?station_version=1.9069'
     let data = await requestApi.get(options)
-    let result = ''
     let r = data.info.split('=')[1]
     let stations = r.split('@')
     let stationsFile = []
@@ -83,6 +82,11 @@ async function updateStations(){
 
         stationsFile.push(list)
     })
+    let dirPath = './public/js/'
+    if(!fs.existsSync(dirPath)){
+        fs.mkdirSync(dirPath)
+    }
+    fs.writeFileSync('./public/js/stations.js', JSON.stringify(stationsFile))
     return stationsFile
 }
 
