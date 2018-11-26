@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import index from '../view/index'
-import stations from '../components/stations/index.vue'
+import stationsList from '../components/stationsList/index'
 
 Vue.use(Router)
 
@@ -17,13 +17,9 @@ export default new Router({
       children: [
         {
           path: ':id',
-          component: stations
+          component: stationsList
         }
       ]
-    },
-    {
-      path: '/stations',
-      component: stations
     }
   ]
 })

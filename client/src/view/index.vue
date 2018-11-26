@@ -1,16 +1,19 @@
 <template>
   <div>
     <span class="title" @click="getStation">火车票查询系统</span>
+    <stations :data="stationsData"></stations>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+  import stations from '@/components/stations/index'
   export default {
     name: 'index',
     data() {
       return {
-        message: ''
+        message: '',
+        stationsData: [{to: 'bj', date: 20181130, name: '北京'}]
       }
     },
     created() {
@@ -54,7 +57,7 @@
       },
       getStation() {
         console.log(1)
-        this.$router.push({path: 'station'})
+        this.$router.push({path: '/index/' + Math.random()})
       },
       toUrlParams(opt) {
         let arr = []
@@ -77,6 +80,9 @@
           }
         }
       }
+    },
+    components: {
+      stations
     }
   }
 </script>
