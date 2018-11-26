@@ -8,4 +8,6 @@
 # install dependencies
 npm install
 
+node test.js
+
 ```
