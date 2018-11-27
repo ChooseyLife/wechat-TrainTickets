@@ -1,4 +1,4 @@
-function toUrlParams(opt) {
+export function toUrlParams(opt) {
   let arr = []
   for (let k in opt) {
     arr.push(k + '=' + opt[k])
@@ -6,7 +6,7 @@ function toUrlParams(opt) {
   return arr.join('&')
 }
 
-function request(url, option, method, cb) {
+export function request(url, option, method, cb) {
   let xhr = new XMLHttpRequest()
   xhr.open(method, url, true)
   xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
@@ -18,9 +18,4 @@ function request(url, option, method, cb) {
       }
     }
   }
-}
-
-module.export = {
-  http: request,
-  toUrlParams: toUrlParams
 }

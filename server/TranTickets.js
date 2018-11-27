@@ -79,7 +79,7 @@ async function updateStations(){
         list.code = code
         list.short = short
         list.other = other
-
+        list.index = py.slice(0,1).toLocaleUpperCase()
         stationsFile.push(list)
     })
     let dirPath = './public/js/'

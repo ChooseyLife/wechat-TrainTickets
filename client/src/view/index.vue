@@ -1,13 +1,14 @@
 <template>
   <div>
-    <span class="title" @click="getStation">火车票查询系统</span>
-    <stations :data="stationsData"></stations>
+    <span class="title">火车票查询系统</span>
+    <stations v-on:selectStation="getStation"></stations>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
   import stations from '@/components/stations/index'
+  import { request, toUrlParams } from '@/assets/js/request'
   export default {
     name: 'index',
     data() {
@@ -55,8 +56,12 @@
           this.message = res
         })
       },
-      getStation() {
-        console.log(1)
+      getStationFile() {
+        console.log(request, toUrlParams)
+      },
+      getStation(val) {
+        console.log(1, val)
+        this.getStationFile()
         this.$router.push({path: '/index/' + Math.random()})
       },
       toUrlParams(opt) {

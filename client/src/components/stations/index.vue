@@ -1,11 +1,7 @@
 <template>
-  <scroll :data="data">
-    <ul>
-      <li v-for="list in data"
-          :key="list.name"
-      ></li>
-    </ul>
-  </scroll>
+  <div>
+    <input placeholder="选择出发点" @focus="selectFrom()">
+  </div>
 </template>
 
 <script type="text/ecmascript-6">
@@ -22,6 +18,11 @@
     data() {
       return {
         show: false
+      }
+    },
+    methods: {
+      selectFrom(data) {
+        this.$emit('selectStation', 'hi')
       }
     },
     components: {
