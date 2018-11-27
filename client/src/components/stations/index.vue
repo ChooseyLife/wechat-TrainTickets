@@ -1,9 +1,5 @@
 <template>
-  <div class="stations-content">
-    <div class="back"
-         @click="back">
-      <i class="icon-back"></i>
-    </div>
+  <div>
     <input placeholder="选择出发点" @focus="selectFrom()">
   </div>
 </template>
@@ -27,9 +23,6 @@
     methods: {
       selectFrom(data) {
         this.$emit('selectStation', 'hi')
-      },
-      back() {
-        this.$router.back()
       }
     },
     components: {
@@ -45,5 +38,4 @@
   .slider-enter, .slider-leave-to{
     transform: translate3d(100%,0,0)
   }
-
 </style>
