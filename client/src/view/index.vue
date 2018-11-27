@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <span class="title">火车票查询系统</span>
     <stations v-on:selectStation="getStation"></stations>
     <router-view></router-view>
@@ -92,8 +92,9 @@
   }
 </script>
 
-<style scoped>
-  .title{
-    color: #fff;
-  }
+<style scoped lang="stylus" rel="stylesheet/stylus">
+  .container
+    position: fixed
+    .title
+      color: #fff
 </style>
