@@ -1,7 +1,7 @@
 <template>
   <!-- 站点列表 -->
   <transition name="slider">
-    <stations-list :data="data"></stations-list>
+    <stations-list :data="data" v-on:checkStations="checkedStations"></stations-list>
   </transition>
 </template>
 
@@ -56,6 +56,9 @@
           return a.title.charCodeAt(0) - b.title.charCodeAt(0)
         })
         return ret
+      },
+      checkedStations(items) {
+        console.log(items)
       }
     },
     components: {

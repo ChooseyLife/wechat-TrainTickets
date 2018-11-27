@@ -7,6 +7,9 @@
 
 <script>
   import stations from '@/components/stations/index'
+  import { request } from '@/assets/js/request'
+
+  const HOT_NAME = '热门'
   export default {
     name: 'index',
     data() {
@@ -15,7 +18,6 @@
       }
     },
     created() {
-      this.getStationFile()
     },
     methods: {
       getTrainTicket() {
@@ -92,7 +94,7 @@
         return ret
       },
       getStation(val) {
-        this.$router.push({path: '/index/1'})
+        this.$router.push({path: '/index/' + val})
       },
       toUrlParams(opt) {
         let arr = []

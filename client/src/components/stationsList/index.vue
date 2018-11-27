@@ -40,6 +40,7 @@
     },
     methods: {
       stationsCheck(item) {
+        this.$router.back()
         this.$emit('checkStations', item)
       },
       back() {
