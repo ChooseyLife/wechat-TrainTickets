@@ -27,44 +27,20 @@
 
 <script type="text/ecmascript-6">
   import Scroll from '@/base/scroll/index.vue'
-  import { request } from '@/assets/js/request'
   export default {
-    data() {
-      return {
-        data: []
+    props: {
+      data: {
+        type: Array,
+        default: function () {
+          return []
+        }
       }
     },
     created() {
-      this.getStations()
     },
     methods: {
-      getStations() {
-        request('/api/updateStations', null, 'POST', (res) => {
-          console.log(this._normallizeStaions(res))
-          this.data = this._normallizeStaions(res)
-        })
-      },
-      _normallizeStaions(dataList) {
-        let map = {}
-        dataList.forEach((item, index) => {
-          const key = item.index
-          if (!map[key]) {
-            map[key] = {
-              title: key,
-              items: []
-            }
-          }
-          map[key].items.push({
-            name: item.name,
-            code: item.code,
-            short: item.short,
-            py: item.py
-          })
-        })
-        return map
-      },
       stationsCheck(item) {
-        this.$emit('checked', item)
+        this.$emit('checkStations', item)
       },
       back() {
         this.$router.back()
