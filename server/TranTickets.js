@@ -86,7 +86,7 @@ async function updateStations(){
     if(!fs.existsSync(dirPath)){
         fs.mkdirSync(dirPath)
     }
-    fs.writeFileSync('./public/js/stations.js', JSON.stringify(stationsFile))
+    // fs.writeFileSync('./public/js/stations.js', JSON.stringify(stationsFile))
     return stationsFile
 }
 
