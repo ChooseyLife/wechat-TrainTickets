@@ -8,16 +8,19 @@
 <script>
   import stations from '@/components/stations/index'
   import { request } from '@/assets/js/request'
+  import { bus } from '@/assets/js/event-bus'
 
   const HOT_NAME = '热门'
   export default {
     name: 'index',
     data() {
       return {
-        message: ''
+        message: '',
+        data: []
       }
     },
     created() {
+      this.getStationsFiles()
     },
     methods: {
       getTrainTicket() {
@@ -59,6 +62,7 @@
       getStationsFiles() {
         request('/api/updateStations', null, 'POST', (res) => {
           this.data = this._normallizeStaions(res)
+          bus.$emit('stationsList', this.data)
         })
       },
       _normallizeStaions(dataList) {

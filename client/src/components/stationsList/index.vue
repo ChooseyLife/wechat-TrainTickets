@@ -27,21 +27,23 @@
 
 <script type="text/ecmascript-6">
   import Scroll from '@/base/scroll/index.vue'
+
   export default {
     props: {
       data: {
         type: Array,
-        default: function () {
-          return []
-        }
+        default: () => []
       }
     },
     created() {
+      console.log(this.$route)
     },
     methods: {
       stationsCheck(item) {
+        let items = item
+        items.arrive = this.$route.params.id
+        this.$emit('checkStations', items)
         this.$router.back()
-        this.$emit('checkStations', item)
       },
       back() {
         this.$router.back()

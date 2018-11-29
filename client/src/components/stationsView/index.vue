@@ -1,7 +1,7 @@
 <template>
   <!-- 站点列表 -->
   <transition name="slider">
-    <stations-list :data="data" v-on:checkStations="checkedStations"></stations-list>
+    <stations-list v-on:checkStations="checkedStations" :data="data"></stations-list>
   </transition>
 </template>
 
@@ -9,6 +9,8 @@
   import Scroll from '@/base/scroll/index.vue'
   import stationsList from '@/components/stationsList/index'
   import { request } from '@/assets/js/request'
+  import { bus } from '@/assets/js/event-bus'
+
   const HOT_NAME = '热门'
   export default {
     data() {
@@ -58,7 +60,7 @@
         return ret
       },
       checkedStations(items) {
-        console.log(items)
+        bus.$emit('checkedItem', items)
       }
     },
     components: {
