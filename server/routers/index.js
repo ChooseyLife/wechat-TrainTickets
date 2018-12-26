@@ -1,4 +1,5 @@
-let router = require('koa-router')()
+let Router = require('koa-router')
+let router = new Router()
 let train = require('../TranTickets')
 
 router.post('/price', async (ctx) => {
