@@ -1,9 +1,13 @@
 <template>
-  <div>
-    <input placeholder="选择出发点" @focus="selectFrom('from')" v-model="fromStations.name">
-    <button><img src="./transfrom.png"/></button>
-    <input placeholder="选择目的地" @focus="selectFrom('to')" v-model="toStations.name">
-  </div>
+  <ul class="train-content">
+    <li>
+      <dd class="train-form" v-text="train_from"></dd>
+      <dd class="train-to" v-text="train_to"></dd>
+      <dt>
+        <i class="chage"></i>
+      </dt>
+    </li>
+  </ul>
 </template>
 
 <script type="text/ecmascript-6">
@@ -14,7 +18,9 @@
     data() {
       return {
         fromStations: {},
-        toStations: {}
+        toStations: {},
+        train_from: '北京',
+        train_to: '上海'
       }
     },
     created() {
@@ -25,7 +31,7 @@
     methods: {
       selectFrom(data) {
         this.$emit('selectStation', data)
-      },
+      }
     },
     components: {
       Scroll
@@ -33,16 +39,17 @@
   }
 </script>
 <style scoped lang="stylus" rel="stylesheet/stylus">
-  input
-    padding:.5rem .75rem
-    border: 1px solid rgba(0,0,0,.15);
-    color: #464a4c;
-  button
-    width: 35px
-    height: 35px
-    line-height: 35px
-    vertical-align: middle
-    img
-      width: 100%
-      height: 100%
+  .train-content
+    color: #000
+    .chage
+      display: inline-block
+      &:after
+        content: ''
+        display: inline-block;
+        width: 1.4rem
+        height 1.4rem
+        background: url("../../assets/images/train-index.png")
+        background-repeat: no-repeat;
+        background-size: 4rem;
+        background-position: -2rem 0
 </style>

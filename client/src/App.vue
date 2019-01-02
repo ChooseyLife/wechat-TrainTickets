@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <div class="m-header">
-      <div class="icon"></div>
       <h1 class="text">火车票查询</h1>
     </div>
     <keep-alive>
