@@ -1,11 +1,11 @@
 <template>
   <ul class="train-content">
-    <li>
+    <li class="train-flex">
       <dd class="train-form" v-text="train_from"></dd>
-      <dd class="train-to" v-text="train_to"></dd>
       <dt>
         <i class="chage"></i>
       </dt>
+      <dd class="train-to" v-text="train_to"></dd>
     </li>
   </ul>
 </template>
@@ -40,16 +40,30 @@
 </script>
 <style scoped lang="stylus" rel="stylesheet/stylus">
   .train-content
+    font-size: 32px
     color: #000
+    .train-flex
+      display: flex
+      justify-content: space-around
+      align-items: center
+    dd
+      width: 38%
+      border-width: 0
+      border-color: #e6e6e6
+      border-bottom-width: 1px
+    .train-to
+      text-align: right
     .chage
       display: inline-block
+      width: 48px
+      height: 48px
       &:after
         content: ''
         display: inline-block;
-        width: 1.4rem
-        height 1.4rem
+        width: 100%
+        height 100%
         background: url("../../assets/images/train-index.png")
         background-repeat: no-repeat;
-        background-size: 4rem;
-        background-position: -2rem 0
+        background-size: 108px;
+        background-position: -49px 8px
 </style>
