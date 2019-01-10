@@ -12,13 +12,14 @@
       <dd>今天</dd>
     </li>
     <li>
-      <button class="c_btn">查询</button>
+      <button class="c_btn" @click="queryTicket">查询</button>
     </li>
   </ul>
 </template>
 
 <script type="text/ecmascript-6">
   import Scroll from '@/base/scroll/index.vue'
+  import { request } from '@/assets/js/request'
   import { bus } from '@/assets/js/event-bus'
 
   export default {
@@ -38,6 +39,16 @@
     methods: {
       selectFrom(data) {
         this.$emit('selectStation', data)
+      },
+      queryTicket() {
+        let data = {
+          date: '',
+          form_station: '',
+          end_station: '',
+          people: 'ADULT'
+        }
+        request('/api/ticket', data, 'POST', (res) => {
+        })
       }
     },
     components: {
