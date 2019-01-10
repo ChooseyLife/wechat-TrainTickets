@@ -7,6 +7,13 @@
       </dt>
       <dd class="train-to" v-text="train_to"></dd>
     </li>
+    <li class="train-flex">
+      <dd>01月11日</dd>
+      <dd>今天</dd>
+    </li>
+    <li>
+      <button class="c_btn">查询</button>
+    </li>
   </ul>
 </template>
 
@@ -45,22 +52,40 @@
     color: #000
     .train-flex
       display: flex
-      justify-content: space-around
+      justify-content: space-between
       align-items: center
       position relative
+      height: 135px
     dd
       width: 38%
-      height: 75px
+      height: 112.5px
+      line-height: 112.5px
       border-style: solid
       border-width: 0
       border-color: #e6e6e6
       border-bottom-width: 1px
+    dd:nth-child(2)
+      text-align: right
     dt
       position: relative
       width: 14%
       height: 75px
     .train-to
       text-align: right
+    .c_btn
+      border: 0
+      color: #fff;
+      font-size: 36px;
+      width: 100%;
+      height: 1.2rem;
+      line-height: 1.2rem;
+      display: block;
+      border-radius: 3px;
+      margin: 0 auto;
+      text-align: center;
+      background-color: #ff9a14;
+      -webkit-tap-highlight-color: #ff8c00;
+      box-shadow: 0 2px 8px rgba(255,154,20,.5);
     .chage
       position: absolute
       top: 0
