@@ -65,8 +65,8 @@
       position: absolute
       top: 0
       left: 28%
-      width: 75px
-      height: 75px
+      width: 64px
+      height 64px
       &:after
         content: ''
         position: absolute
