@@ -34,7 +34,7 @@
       display: inline-block
       vertical-align: top
       line-height : 44px
-      font-size: $font-size-large
+      font-size: 40px
     .mine
       position: absolute
       top: 0

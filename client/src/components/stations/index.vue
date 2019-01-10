@@ -40,30 +40,42 @@
 </script>
 <style scoped lang="stylus" rel="stylesheet/stylus">
   .train-content
-    font-size: 32px
+    padding: 22.5px
+    font-size: 50px
     color: #000
     .train-flex
       display: flex
       justify-content: space-around
       align-items: center
+      position relative
     dd
       width: 38%
+      height: 75px
+      border-style: solid
       border-width: 0
       border-color: #e6e6e6
       border-bottom-width: 1px
+    dt
+      position: relative
+      width: 14%
+      height: 75px
     .train-to
       text-align: right
     .chage
-      display: inline-block
-      width: 48px
-      height: 48px
+      position: absolute
+      top: 0
+      left: 28%
+      width: 75px
+      height: 75px
       &:after
         content: ''
-        display: inline-block;
-        width: 100%
-        height 100%
+        position: absolute
+        top: 0;
+        left: 0;
+        width: 64px
+        height 64px
         background: url("../../assets/images/train-index.png")
-        background-repeat: no-repeat;
-        background-size: 108px;
-        background-position: -49px 8px
+        background-repeat: no-repeat
+        background-size: 180px
+        background-position: -90px 0
 </style>

@@ -19,7 +19,7 @@
       }
     },
     created() {
-      this.getStations()
+      // this.getStations()
     },
     methods: {
       getStations() {
