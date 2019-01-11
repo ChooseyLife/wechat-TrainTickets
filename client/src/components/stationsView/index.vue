@@ -20,7 +20,7 @@
     },
     created() {
     },
-    monted() {
+    mounted() {
       this.getStations()
     },
     methods: {
@@ -63,6 +63,7 @@
         return ret
       },
       checkedStations(items) {
+        // 抛出站点到上一层路由
         bus.$emit('checkedItem', items)
       }
     },

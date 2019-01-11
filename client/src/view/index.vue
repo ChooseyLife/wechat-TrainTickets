@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <stations v-on:selectStation="getStation"></stations>
+    <stations v-on:selectStation="getStation" :stationInfo="stationsItem"></stations>
     <router-view></router-view>
   </div>
 </template>
@@ -16,10 +16,18 @@
     data() {
       return {
         message: '',
-        data: []
+        data: [],
+        stationsItem: {}
       }
     },
     created() {
+      bus.$on('checkedItem', (items) => {
+        this.stationsItem = items
+        // items.arrive === 'to' ? this.toStations = items : this.fromStations = items
+      })
+    },
+    mounted() {
+      this.getTrainTicket()
       this.getStationsFiles()
     },
     methods: {
@@ -28,7 +36,7 @@
         let opt = {
           from_station: 'GZQ',
           end_station: 'KMM',
-          date: '2018-12-25',
+          date: '2019-01-25',
           people: 'ADULT'
         }
         this.postMehod('/api/ticket', opt, 'POST', (res) => {
@@ -120,6 +128,11 @@
             }
           }
         }
+      }
+    },
+    watch: {
+      stationsItem: (n, o) => {
+        return this.stationsItem
       }
     },
     components: {

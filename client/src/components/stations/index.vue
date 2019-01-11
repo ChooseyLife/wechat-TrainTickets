@@ -1,11 +1,11 @@
 <template>
   <ul class="train-content">
     <li class="train-flex">
-      <dd class="train-form" v-text="train_from" @click="selectStation('from')"></dd>
+      <dd class="train-form" v-text="fromStations.name" @click="selectStation(1)"></dd>
       <dt>
         <i class="chage"></i>
       </dt>
-      <dd class="train-to" v-text="train_to"></dd>
+      <dd class="train-to" v-text="toStations.name" @click="selectStation(2)"></dd>
     </li>
     <li class="train-flex">
       <dd>01月11日</dd>
@@ -23,6 +23,11 @@
   import { bus } from '@/assets/js/event-bus'
 
   export default {
+    props: {
+      stationInfo: {
+        type: Object
+      }
+    },
     data() {
       return {
         fromStations: {},
@@ -33,25 +38,33 @@
     },
     created() {
       bus.$on('checkedItem', (items) => {
-        items.arrive === 'to' ? this.toStations = items : this.fromStations = items
+        // items.arrive === 'to' ? this.toStations = items : this.fromStations = items
       })
     },
     methods: {
       selectFrom(data) {
-        this.$emit('selectStation', data)
+        // this.$emit('selectStation', data)
       },
-      selectStation() {
-        this.$router.push({path: 'index'})
+      selectStation(param) {
+        this.$router.push({path: '/index/' + param})
       },
       queryTicket() {
         let data = {
-          date: '',
-          form_station: '',
-          end_station: '',
+          date: '2019-01-11',
+          from_station: 'GZQ',
+          end_station: 'KMM',
           people: 'ADULT'
         }
-        request('/api/ticket', data, 'POST', (res) => {
-        })
+        request('/api/ticket', data, 'POST', (res) => {})
+      }
+    },
+    watch: {
+      stationInfo: function (n, o) {
+        if (parseInt(n.arrive) === 1) {
+          this.fromStations = n
+        } else {
+          this.toStations = n
+        }
       }
     },
     components: {

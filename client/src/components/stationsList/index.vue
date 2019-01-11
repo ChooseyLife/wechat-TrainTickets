@@ -36,10 +36,11 @@
       }
     },
     created() {
-      console.log(this.$route)
+      // console.log(this.$route)
     },
     methods: {
       stationsCheck(item) {
+        // 选择站点
         let items = item
         items.arrive = this.$route.params.id
         this.$emit('checkStations', items)
