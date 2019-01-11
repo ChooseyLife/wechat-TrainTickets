@@ -19,12 +19,15 @@
       }
     },
     created() {
+    },
+    monted() {
       this.getStations()
     },
     methods: {
       getStations() {
         request('/api/updateStations', null, 'POST', (res) => {
           this.data = this._normallizeStaions(res)
+          console.log(this.data)
         })
       },
       _normallizeStaions(dataList) {

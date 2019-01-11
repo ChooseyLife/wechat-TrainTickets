@@ -1,7 +1,7 @@
 <template>
   <ul class="train-content">
     <li class="train-flex">
-      <dd class="train-form" v-text="train_from"></dd>
+      <dd class="train-form" v-text="train_from" @click="selectStation('from')"></dd>
       <dt>
         <i class="chage"></i>
       </dt>
@@ -39,6 +39,9 @@
     methods: {
       selectFrom(data) {
         this.$emit('selectStation', data)
+      },
+      selectStation() {
+        this.$router.push({path: 'index'})
       },
       queryTicket() {
         let data = {
