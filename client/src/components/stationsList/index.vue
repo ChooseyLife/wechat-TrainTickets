@@ -83,14 +83,14 @@
     overflow: hidden
     .list-group
       .list-group-title
-        padding-left: 20px;
-        height: 30px;
-        line-height: 30px;
-        font-size: 14px;
+        padding-left: 30px;
+        height: 55px;
+        line-height: 55px;
+        font-size: 28px;
         color: hsla(0,0%,100%,.5);
         background: #333
       .list-group-item
-        padding: 20px 0 0 30px;
+        padding: 22px 0 0 30px;
         font-size: 14px;
         span
           margin-left: 20px

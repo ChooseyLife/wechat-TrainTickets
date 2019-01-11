@@ -55,7 +55,7 @@
           end_station: 'KMM',
           people: 'ADULT'
         }
-        request('/api/ticket', data, 'POST', (res) => {})
+        // request('/api/ticket', data, 'POST', (res) => {})
       }
     },
     watch: {
