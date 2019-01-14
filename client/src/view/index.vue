@@ -27,8 +27,7 @@
       })
     },
     mounted() {
-      this.getTrainTicket()
-      this.getStationsFiles()
+      // this.getStationsFiles()
     },
     methods: {
       getTrainTicket() {

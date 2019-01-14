@@ -50,12 +50,25 @@
       },
       queryTicket() {
         let data = {
-          date: '2019-01-11',
-          from_station: 'GZQ',
-          end_station: 'KMM',
-          people: 'ADULT'
+          ArriveName: '北京',
+          ChannelName: 'h5',
+          DepartDate: '2019-01-20',
+          DepartName: '厦门',
+          RecommendType: '',
+          TrainCount: 1,
+          contentType: 'json',
+          head: {
+            auth: null,
+            cid: '09031137410562099737',
+            ctok: '',
+            cver: '1.0',
+            extension: [{name: 'protocal', value: 'http'}],
+            lang: '01',
+            sid: '8888',
+            syscode: '09'
+          }
         }
-        // request('/api/ticket', data, 'POST', (res) => {})
+        request('http://m.ctrip.com/restapi/soa2/10103/json/GetRecommendList', JSON.stringify(data), 'POST', (res) => {})
       }
     },
     watch: {
