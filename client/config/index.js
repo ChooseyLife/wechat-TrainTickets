@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'http://m.ctrip.com/restapi/soa2',
         pathRewrite: {
           '^/api' : ''
         }
